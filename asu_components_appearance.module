@@ -21,3 +21,12 @@ function asu_components_appearance_preprocess_block(&$variables) {
     }
   }
 }
+
+/**
+ * Implements hook_field_widget_WIDGET_TYPE_form_alter().
+ */
+function asu_components_appearance_field_widget_entity_reference_paragraphs_form_alter(&$element, &$form_state, $context)
+{
+  // Skip "Confirm deletion / Restore actions" behavior for a given paragraph.
+  $element['top']['links']['remove_button']['#paragraphs_mode'] = 'removed';
+}
